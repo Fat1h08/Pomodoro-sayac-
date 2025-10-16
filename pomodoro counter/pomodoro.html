@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Geri Sayım</title>
+</head>
+<body>
+<style>
+
+.s {
+  display: flex;
+
+  justify-content: center; 
+  align-items: center;  
+
+
+  background-color: rgb(23, 134, 224);
+  color: rgb(14, 4, 4);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  box-shadow: 5px 5px 10px gray;
+  border-radius: 20px;
+  font-weight: 500;
+  font-size: 6rem;
+
+  margin: 20px auto;
+  width: 500px;
+  height: 300px;
+  
+}
+.buton-kapsayici {
+    display: flex; 
+    justify-content: center; 
+    gap: 15px;
+    margin-top: 20px;
+   
+
+}
+.e{
+  background-color: darkolivegreen;
+
+width: 90px;
+height: 30px;
+border-radius: 10px;
+  text-align: center;
+  box-shadow: 5px 5px 10px gray;
+
+
+}
+.e:hover{
+
+ transition: transform 0.2s ease, background-color 0.2s ease;
+transform: scale(1.05);
+
+}
+.u{
+background-color: red;
+
+
+  
+      justify-content: center;     
+     
+
+width: 90px;
+height: 30px;
+border-radius: 10px;
+  text-align: center;
+  box-shadow: 5px 5px 10px gray;
+}
+.u:hover{
+
+ transition: transform 0.2s ease, background-color 0.2s ease;
+transform: scale(1.05);
+
+}
+
+
+
+
+
+.ı{
+
+
+   
+      justify-content: center;
+width: 90px;
+height: 30px;
+border-radius: 10px;
+  text-align: center;
+  box-shadow: 5px 5px 10px gray;
+}
+.ı:hover{
+
+ transition: transform 0.3s ease, background-color 0.2s ease;
+transform: scale(1.05);
+
+}
+.w{text-align: center; 
+   font-weight: 300; 
+   font-size: 2rem;
+}
+</style>
+<p class=" w">⏰POMODORO SAYACI </p>
+<p class="s" id="ekran">25:00  </p>
+<div class="buton-kapsayici">
+<button class ="e"onclick="baslat()">Başlat</button>
+<button class ="u"  onclick="durdur()">Durdur</button>
+<button  class ="ı"onclick="resetle()">Reset</button>
+</div>
+<script>
+let sayac = 0;
+let a = 1500;
+let intervalId = null;
+
+function baslat() {
+  if (intervalId) return; 
+  
+  
+
+      intervalId = setInterval(function(){
+ 
+sayac++;
+let kalan =a-sayac;
+    if (kalan < 0) kalan = 0;
+let dakika = Math.floor(kalan / 60);
+let saniye = kalan % 60;
+let ç = String(dakika).padStart(2,"0");
+let c = String(saniye).padStart(2,"0");
+document.getElementById("ekran").textContent= `${dakika} :${saniye}`;
+    },1000);}
+
+function durdur() {
+  clearInterval(intervalId);
+  intervalId = null;
+}
+
+function resetle() {
+  durdur();
+  sayac = 0;
+  document.getElementById("ekran").textContent = `${(a/60).toFixed(2)} `;
+  if(dakika ==0&& saniye==0){alert("süre bitti")}
+}
+</script>
+
+</body>
+</html>
